@@ -1,0 +1,26 @@
+---
+title: "Laboratory 2 - Data Driven Security"
+author: "Arnau Sangrà Rocamora"
+date: "Fall 2016"
+output:
+  html_document:
+    toc: yes
+  html_notebook:
+    number_sections: yes
+    theme: spacelab
+    toc: yes
+    toc_float: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(fig.align = 'center')
+```
+
+## About the laboratory
+
+This second laboratory assumes that the first laboratory has been entirely completed. Thus, most of the work will be done using the tools seen in the first one.
+
+In case the first is not completed, it is encouraged for you to first complete the previous one, ask any doubts that may arise, and then, complete this one.
+
+# 
