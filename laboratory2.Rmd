@@ -51,7 +51,7 @@ Moreover, it is also noticeable the set of functions included in Devtools that t
 
 - _Install devtools, the package developing tools, either by using the console or the Packages pane._
 
-# Cloning net-basic
+# Cloning net.basic package
 
 We will be using a very basic package yet complete to explore the fundamentals of making our own packages.
 In particular, we have prepared a package named net-basic that includes some functions to work with network information.
@@ -64,9 +64,9 @@ On one hand, if we were only interested on making use of the functions exported 
 devtools::install_github("r-net-tools/net-basic")
 ```
 
-However, our intention is to look into the details of the package. Therefore, it is much more appropiate to clone the repository into a folder and then, investigate the package implementation.
+However, since our intention is to look into the details of the package. Therefore, it is much more appropiate to clone the repository into a folder and then, investigate the package implementation.
 
-- _Clone the package and open a new RStudio window with the package project.  (You can use the terminal with "git clone" command, or the RStudio option within "New" option)._
+- _Clone the package repository and open a new RStudio window with the package project.  (You can use the terminal with "git clone" command, or the RStudio option within "New" option)._
 
 After all, we can always install the package after having cloned it into our computer.
 
@@ -74,7 +74,21 @@ After all, we can always install the package after having cloned it into our com
 
 ## DESCRIPTION file
 
+The description file, is a regular plain text file that contains the details regarding the package. information such as the real _package name_, _authors_ or the _license_  are defined completing respective fields.
+
+```{r, out.width = "500px"}
+knitr::include_graphics("figures/package_description.png")
+```
+
 ## NAMESPACE file
+
+The other regular plain text that must be necessarily in the root of the package. The content of the file defines which functions will be exported. That is, the functions that will be available to the final user who after installing the package.
+
+```{r, out.width = "400px"}
+knitr::include_graphics("figures/package_namespace.png")
+```
+
+Although this is indeed a simple file, it is usually automatically generated according to the functions documentation when calling `devtools::document()`, a wrapper function for `roxygenize()`.
 
 ## R folder
 
@@ -95,6 +109,10 @@ This file with _markdown_ extension, albeit not strictly necessary, is usually i
 So it is a great opportunity to include in it some considerations such as the package name, a brief description, a short _how-to_ or any relevant detail regarding the package.
 
 - **data/**:
+
+All files included in this directory will be available to the user after installing the package. A very common use of this folder, usually involves R data frames containing data related to the package itself.
+
+Since user will be able to make use of the R data frames or the data contained in this folder, ideally all the infomartion included should be documented.
 
 - **tests/**:
 
@@ -156,7 +174,7 @@ You should at least be capable to derive the following information from the sche
 
 - The `cpe-list` tag is a CPE entry container.
 
-From the 
+From the following excerpt:
 
 > _The ItemType complex type defines an element that represents a single CPE Name._
 
@@ -164,10 +182,9 @@ From the
 
 The cpe-item type definition 
 
-> some text here
+> _The required name attribute is a URI which must be a unique key and should follow the URI structure outlined in the CPE Specification. [...]_
 
 - The `cpe-item` tag has a mandatory `name` attribute, that contains the CPE id.
-
 
 As specifically stated in the CPE XML schema in the `cpe-item` tag section:
 
@@ -189,7 +206,7 @@ From the following XML schema chunk:
 
 ## Parsing XML
 
-Once we have reviewed the schema of the XML, it is time for some coding. It is specially important to restrict the scope of each one of the functions, avoiding functions that do too many things. [SOLID?]
+Once we have reviewed the schema of the XML, it is time for some coding. It is specially important to restrict the scope of each one of the functions, avoiding complex functions that do too many things.
 
 - _Download the CPE dictionary file from the [NVD website.](https://nvd.nist.gov/cpe.cfm)_
 
@@ -249,5 +266,5 @@ ParseCPEData <- function(cpe.file) {
 # Complementary material
 
 - [Devtools Cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/06/devtools-cheatsheet.pdf)
--
-- 
+- [W3Schools XPath Tutorial](http://www.w3schools.com/xml/xml_xpath.asp)
+- [R packages Book](http://r-pkgs.had.co.nz/)
