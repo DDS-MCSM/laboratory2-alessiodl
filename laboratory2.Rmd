@@ -66,7 +66,7 @@ devtools::install_github("r-net-tools/net-basic")
 
 However, since our intention is to look into the details of the package. Therefore, it is much more appropiate to clone the repository into a folder and then, investigate the package implementation.
 
-- _Clone the package repository and open a new RStudio window with the package project.  (You can use the terminal with "git clone" command, or the RStudio option within "New" option)._
+- _[Clone the package](https://github.com/r-net-tools/net.basic) repository and open a new RStudio window with the package project.  (You can use the terminal with "git clone" command, or the RStudio option within "New" option)._
 
 After all, we can always install the package after having cloned it into our computer.
 
