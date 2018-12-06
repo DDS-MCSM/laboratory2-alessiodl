@@ -1,7 +1,7 @@
 ---
 title: "Laboratory 2"
 author: "Data Driven Security"
-date: "Spring 2018"
+date: "Fall 2018"
 output:
   html_document:
     toc: yes
@@ -24,8 +24,14 @@ This second laboratory assumes that the first laboratory has been entirely compl
 
 In case the first is not completed, it is encouraged for you to first complete the previous one, ask any doubts that may arise, and then, complete this one.
 
+### Submit laboratory
 
-# Devtools as a package to create packages
+In order to complete this laboratory, it will be necessary to fill the `answers_lab2.Rmd` R Markdown file with the answers to the different statements included in this file.
+
+
+# R Packages
+
+## Devtools as a package to create packages
 
 When creating a new package, the *Devtools* package is probably the most widely tool used to complete such task. 
 It offers a comprehensive set of functionalities that simplify the process, from the very beginning to every subsequent iteration of the development cycle.
@@ -51,28 +57,10 @@ Moreover, it is also noticeable the set of functions included in Devtools that t
 
 - _Install devtools, the package developing tools, either by using the console or the Packages pane._
 
-# Cloning net.basic package
 
-We will be using a very basic package yet complete to explore the fundamentals of making our own packages.
-In particular, we have prepared a package named net-basic that includes some functions to work with network information.
+## Basic structure of a package
 
-Since it is a very simple package, it is not published on CRAN but on Github. Thus, to obtain this package there are many alternatives possible. 
-
-On one hand, if we were only interested on making use of the functions exported by net-basic, we could install it directly from Github witg devtools function to do so.
-
-```{r install_from_github, eval=FALSE}
-devtools::install_github("r-net-tools/net-basic")
-```
-
-However, since our intention is to look into the details of the package. Therefore, it is much more appropiate to clone the repository into a folder and then, investigate the package implementation.
-
-- _[Clone the package](https://github.com/r-net-tools/net.basic) repository and open a new RStudio window with the package project.  (You can use the terminal with "git clone" command, or the RStudio option within "New" option)._
-
-After all, we can always install the package after having cloned it into our computer.
-
-# Basic structure of a package
-
-## DESCRIPTION file
+### DESCRIPTION file
 
 The description file, is a regular plain text file that contains the details regarding the package. information such as the real _package name_, _authors_ or the _license_  are defined completing respective fields.
 
@@ -80,7 +68,7 @@ The description file, is a regular plain text file that contains the details reg
 knitr::include_graphics("figures/package_description.png")
 ```
 
-## NAMESPACE file
+### NAMESPACE file
 
 The other regular plain text that must be necessarily in the root of the package. The content of the file defines which functions will be exported. That is, the functions that will be available to the final user who after installing the package.
 
@@ -90,13 +78,13 @@ knitr::include_graphics("figures/package_namespace.png")
 
 Although this is indeed a simple file, it is usually automatically generated according to the functions documentation when calling `devtools::document()`, a wrapper function for `roxygenize()`.
 
-## R folder
+### R folder
 
 The R folder represents the main directory for a R package. All the code included in our package must be contained within it. 
 
 Apart from this rule, code can be freely organized within the R folder. Nevertheless, it is a good practice to keep related code within the same file, thus creating as many R.files as necessary.
 
-## Other optional folders/files
+### Other optional folders/files
 
 Beside the previous files and R folder previousy introduced, which represent the minimum structure for an R package, in order to make use of more advanced tools, other files can be included in package root. 
 
@@ -142,21 +130,9 @@ devtools::use_travis()
 
 Moreover, it has been seamless integrated within GitHub so that when pushing new commits to the remote repository, these are automatically tested. To make use of travis, is only necessary to allow Travis access to the remote repository and include this _yaml_ file in the root of the package. 
 
---- 
+---
 
-# Creating an R package
-
-Now that we have seen how a very basic package could be structured, it is time to create our first package. The objective of the package you are about to create is to provide the necessary functions to parse the CPE information into a R data frame.
-
-This way, once we have the CPE data stored into a data frame, it will be much more easy to use such information as data frame represent a good structure to query specific information. Indeed, future scripts or programms will be able to take advantage and rely on this information to provide richer details.
-
-- _Create a basic R package structure_ 
-
-```{r, out.width = "500px"}
-knitr::include_graphics("figures/new_package_rstudio.png")
-```
-
-## Inspecting XML source schema
+# Inspecting XML source schema
 
 Before actually starting to code the whole CPE parser, it is much more effective to start by studying the schema of the XML file in this matter. This file is usually available, and certainly, there is one for each security standard, including CPE, CVE, CWE, etc.
 
