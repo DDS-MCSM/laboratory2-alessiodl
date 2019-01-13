@@ -5,30 +5,24 @@
 #              Arnau Sangra Rocamora - Data Driven Securty                     #
 #                                                                              #
 #******************************************************************************#
+if (!require("xml2")) {install.packages("xml2") ; library(xml2)}
 
-# install.packages("xml2")
-# library(xml2)
-
-# compressed_cpes_url <- "https://nvd.nist.gov/feeds/xml/cpe/dictionary/official-cpe-dictionary_v2.3.xml.zip"
-# cpes_filename <- "cpes.zip"
-# download.file(compressed_cpes_url, cpes_filename)
-# unzip(zipfile = cpes_filename)
+compressed_cpes_url <- "https://nvd.nist.gov/feeds/xml/cpe/dictionary/official-cpe-dictionary_v2.3.xml.zip"
+cpes_filename <- "cpes.zip"
+download.file(compressed_cpes_url, cpes_filename)
+unzip(zipfile = cpes_filename)
 cpe.file <- "./official-cpe-dictionary_v2.3.xml"
 
 GetCPEItems <- function(cpe.raw) {
-  cpe <- NewCPEItem()
-  cpe.raw <- xml2::xml_find_all(cpe.raw)
-
-  # transform the list to data frame
-
-  # return data frame
+cpe.raw <- xml2::xml_find_all(cpes,".//d1:cpe-item")
+#extrac items to cpe.raw
 }
 
 CleanCPEs <- function(cpes){
+# extract and clean all the columns
+dataframe <- trimws(xml_text(cpes))
 
-  # data manipulation
-
-  return(data.frame())
+  return(dataframe)
 }
 
 ParseCPEData <- function(cpe.file) {
